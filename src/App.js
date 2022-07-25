@@ -7,15 +7,55 @@ import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 import Album from './pages/Album';
+import { createUser } from './services/userAPI';
 
 class App extends React.Component {
+  state = {
+    userName: '',
+    loadingApi: false,
+    loggedApi: false,
+  };
+
+  handleChange = ({ target }) => {
+    this.setState({
+      userName: target.value,
+    });
+  }
+
+  saveNameButton = (event) => {
+    event.preventDefault();
+    const { userName } = this.state;
+
+    this.setState({
+      loadingApi: true,
+    }, async () => {
+      await createUser({ name: userName });
+      this.setState({
+        loadingApi: false,
+        userName: '',
+        loggedApi: true,
+      });
+    });
+  }
+
   render() {
+    const { userName, loadingApi, loggedApi } = this.state;
     return (
       <>
         <div>
           <BrowserRouter>
             <Switch>
-              <Route path="/" exact render={ () => <Login /> } />
+              <Route
+                path="/"
+                exact
+                render={ () => (<Login
+                  handleChange={ this.handleChange }
+                  saveNameButton={ this.saveNameButton }
+                  userName={ userName }
+                  loadingApi={ loadingApi }
+                  loggedApi={ loggedApi }
+                />) }
+              />
               <Route path="/search" exact render={ () => <Search /> } />
               <Route path="/album/:id" exact render={ () => <Album /> } />
               <Route path="/favorites" exact render={ () => <Favorites /> } />

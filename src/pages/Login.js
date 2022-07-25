@@ -1,25 +1,24 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Loading from './Loading';
-import { createUser } from '../services/userAPI';
+// import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
-  state = {
-    userName: '',
-    loadingApi: false,
-    loggedApi: false,
-  };
+  // state = {
+  //   userName: '',
+  //   loadingApi: false,
+  //   loggedApi: false,
+  // };
 
-  // const { history } = this.props;
-
-  handleChange = ({ target }) => {
-    this.setState({
-      userName: target.value,
-    });
-  }
+  // handleChange = ({ target }) => {
+  //   this.setState({
+  //     userName: target.value,
+  //   });
+  // }
 
   isButtonDisabled = () => {
-    const { userName } = this.state;
+    const { userName } = this.props;
     const three = 3;
     if (userName.length < three) {
       return true;
@@ -27,24 +26,24 @@ class Login extends React.Component {
     return false;
   }
 
-  saveNameButton = (event) => {
-    event.preventDefault();
-    const { userName } = this.state;
+  // saveNameButton = (event) => {
+  //   event.preventDefault();
+  //   const { userName } = this.state;
 
-    this.setState({
-      loadingApi: true,
-    }, async () => {
-      await createUser({ name: userName });
-      this.setState({
-        loadingApi: false,
-        userName: '',
-        loggedApi: true,
-      });
-    });
-  }
+  //   this.setState({
+  //     loadingApi: true,
+  //   }, async () => {
+  //     await createUser({ name: userName });
+  //     this.setState({
+  //       loadingApi: false,
+  //       userName: '',
+  //       loggedApi: true,
+  //     });
+  //   });
+  // }
 
   render() {
-    const { userName, loadingApi, loggedApi } = this.state;
+    const { userName, loadingApi, loggedApi, handleChange, saveNameButton } = this.props;
 
     return (
       <div data-testid="page-login">
@@ -55,7 +54,7 @@ class Login extends React.Component {
               type="text"
               data-testid="login-name-input"
               id="login-name-input"
-              onChange={ this.handleChange }
+              onChange={ handleChange }
               value={ userName }
             />
           </label>
@@ -63,7 +62,7 @@ class Login extends React.Component {
             type="submit"
             data-testid="login-submit-button"
             disabled={ this.isButtonDisabled() }
-            onClick={ this.saveNameButton }
+            onClick={ saveNameButton }
           >
             Entrar
           </button>
@@ -76,5 +75,13 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  userName: PropTypes.string,
+  loadingApi: PropTypes.bool,
+  loggedApi: PropTypes.bool,
+  handleChange: PropTypes.func,
+  saveNameButton: PropTypes.func,
+}.isRequired;
 
 export default Login;
