@@ -51,6 +51,7 @@ class Login extends React.Component {
         <form>
           <label htmlFor="login-name-input">
             <input
+              name="userName"
               type="text"
               data-testid="login-name-input"
               id="login-name-input"

@@ -14,11 +14,13 @@ class App extends React.Component {
     userName: '',
     loadingApi: false,
     loggedApi: false,
+    singerName: '',
   };
 
   handleChange = ({ target }) => {
+    const { name, value } = target;
     this.setState({
-      userName: target.value,
+      [name]: value,
     });
   }
 
@@ -39,7 +41,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { userName, loadingApi, loggedApi } = this.state;
+    const { userName, loadingApi, loggedApi, singerName } = this.state;
     return (
       <>
         <div>
@@ -56,7 +58,14 @@ class App extends React.Component {
                   loggedApi={ loggedApi }
                 />) }
               />
-              <Route path="/search" exact render={ () => <Search /> } />
+              <Route
+                path="/search"
+                exact
+                render={ () => (<Search
+                  singerName={ singerName }
+                  handleChange={ this.handleChange }
+                />) }
+              />
               <Route path="/album/:id" exact render={ () => <Album /> } />
               <Route path="/favorites" exact render={ () => <Favorites /> } />
               <Route path="/profile" exact render={ () => <Profile /> } />
