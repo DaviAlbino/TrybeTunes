@@ -8,6 +8,7 @@ import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 import Album from './pages/Album';
 import { createUser } from './services/userAPI';
+import searchAlbumsAPI from './services/searchAlbumsAPI';
 
 class App extends React.Component {
   state = {
@@ -15,6 +16,8 @@ class App extends React.Component {
     loadingApi: false,
     loggedApi: false,
     singerName: '',
+    artistResultsList: [],
+    singerInput: '',
   };
 
   handleChange = ({ target }) => {
@@ -40,8 +43,32 @@ class App extends React.Component {
     });
   }
 
+  getSearchButton = () => {
+    const { singerName } = this.state;
+
+    this.setState({
+      loadingApi: true,
+    }, async () => {
+      const artistResults = await searchAlbumsAPI(singerName);
+      this.setState({
+        loadingApi: false,
+        artistResultsList: artistResults,
+        singerInput: singerName,
+        singerName: '',
+        loggedApi: true,
+      });
+    });
+  }
+
   render() {
-    const { userName, loadingApi, loggedApi, singerName } = this.state;
+    const {
+      userName,
+      loadingApi,
+      loggedApi,
+      singerName,
+      artistResultsList,
+      singerInput,
+    } = this.state;
     return (
       <>
         <div>
@@ -64,6 +91,11 @@ class App extends React.Component {
                 render={ () => (<Search
                   singerName={ singerName }
                   handleChange={ this.handleChange }
+                  getSearchButton={ this.getSearchButton }
+                  artistResultsList={ artistResultsList }
+                  loadingApi={ loadingApi }
+                  loggedApi={ loggedApi }
+                  singerInput={ singerInput }
                 />) }
               />
               <Route path="/album/:id" exact render={ () => <Album /> } />
