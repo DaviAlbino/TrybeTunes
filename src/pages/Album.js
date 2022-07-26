@@ -10,6 +10,7 @@ class Album extends React.Component {
     musicsList: [],
     singerName: '',
     albumName: '',
+    imgUrl: '',
   }
 
   componentDidMount() {
@@ -23,21 +24,24 @@ class Album extends React.Component {
       musicsList: songs.filter((song) => song.kind === 'song'),
       singerName: songs[0].artistName,
       albumName: songs[0].collectionName,
+      imgUrl: songs[0].artworkUrl100,
     });
   }
 
   render() {
-    const { musicsList, singerName, albumName } = this.state;
+    const { musicsList, singerName, albumName, imgUrl } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
         <h1 data-testid="artist-name">{ singerName }</h1>
         <h2 data-testid="album-name">{ albumName }</h2>
-        { musicsList.map((music) => (
-          <div key={ music.artistName }>
+        <img src={ imgUrl } alt={ albumName } />
+        { musicsList.map((music, index) => (
+          <div key={ index }>
             <MusicCard
               trackName={ music.trackName }
               previewUrl={ music.previewUrl }
+              music={ music }
             />
           </div>
         )) }
