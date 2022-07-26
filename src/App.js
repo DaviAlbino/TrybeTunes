@@ -98,7 +98,11 @@ class App extends React.Component {
                   singerInput={ singerInput }
                 />) }
               />
-              <Route path="/album/:id" exact render={ () => <Album /> } />
+              <Route
+                path="/album/:id"
+                exact
+                render={ (props) => <Album { ...props } id="id" /> }
+              />
               <Route path="/favorites" exact render={ () => <Favorites /> } />
               <Route path="/profile" exact render={ () => <Profile /> } />
               <Route path="/profile/edit" exact render={ () => <ProfileEdit /> } />
