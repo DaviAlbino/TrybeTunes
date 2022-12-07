@@ -2,21 +2,10 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import '../CSS/login.css';
 // import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
-  // state = {
-  //   userName: '',
-  //   loadingApi: false,
-  //   loggedApi: false,
-  // };
-
-  // handleChange = ({ target }) => {
-  //   this.setState({
-  //     userName: target.value,
-  //   });
-  // }
-
   isButtonDisabled = () => {
     const { userName } = this.props;
     const three = 3;
@@ -26,30 +15,14 @@ class Login extends React.Component {
     return false;
   }
 
-  // saveNameButton = (event) => {
-  //   event.preventDefault();
-  //   const { userName } = this.state;
-
-  //   this.setState({
-  //     loadingApi: true,
-  //   }, async () => {
-  //     await createUser({ name: userName });
-  //     this.setState({
-  //       loadingApi: false,
-  //       userName: '',
-  //       loggedApi: true,
-  //     });
-  //   });
-  // }
-
   render() {
     const { userName, loadingApi, loggedApi, handleChange, saveNameButton } = this.props;
 
     return (
-      <div data-testid="page-login">
-        <h1> Login </h1>
+      <div data-testid="page-login" className="page loginBody">
         <form>
-          <label htmlFor="login-name-input">
+          <h1> Login </h1>
+          <label htmlFor="login-name-input" className="login">
             <input
               name="userName"
               type="text"
@@ -57,6 +30,8 @@ class Login extends React.Component {
               id="login-name-input"
               onChange={ handleChange }
               value={ userName }
+              className="textInput"
+              placeholder="User"
             />
           </label>
           <button
@@ -64,10 +39,12 @@ class Login extends React.Component {
             data-testid="login-submit-button"
             disabled={ this.isButtonDisabled() }
             onClick={ saveNameButton }
+            className="buttonLogin"
           >
             Entrar
           </button>
         </form>
+        <img src="https://theme.zdassets.com/theme_assets/9633455/9814df697eaf49815d7df109110815ff887b3457.png" alt="trybe" className="loginImg" />
         <div>
           { loadingApi && <Loading /> }
         </div>

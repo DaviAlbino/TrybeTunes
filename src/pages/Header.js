@@ -27,11 +27,11 @@ class Header extends React.Component {
 
       return (
         <header data-testid="header-component">
-          <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
+          <Link to="/search" data-testid="link-to-search">Search</Link>
           { '    ' }
-          <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
+          <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
           { '    ' }
-          <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+          <Link to="/profile" data-testid="link-to-profile">Profile</Link>
           { loadingApi ? <Loading /> : (
             <h3 data-testid="header-user-name">
               { userName }

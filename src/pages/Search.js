@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Loading from './Loading';
+import '../CSS/search.css';
 
 class Search extends React.Component {
   isButtonDisabled = () => {
@@ -26,17 +27,18 @@ class Search extends React.Component {
       singerInput,
     } = this.props;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="page-search">
         <Header />
-        <form>
-          <label htmlFor="search-artist-input">
+        <form className="searchForm">
+          <label htmlFor="search-artist-input" className="search">
             <input
               name="singerName"
               onChange={ handleChange }
               value={ singerName }
               data-testid="search-artist-input"
               id="search-artist-input"
-              placeholder="Nome do Artista"
+              placeholder="Artista"
+              className="inputArtist"
             />
           </label>
           <button
@@ -44,20 +46,26 @@ class Search extends React.Component {
             data-testid="search-artist-button"
             disabled={ this.isButtonDisabled() }
             onClick={ getSearchButton }
+            className="searchButton"
           >
-            Procurar
+            Search
           </button>
         </form>
         { artistResultsList.length === 0
-          ? <h4>Nenhum álbum foi encontrado</h4>
-          : <h4>{ `Resultado de álbuns de: ${singerInput}` }</h4>}
+          ? <h4 className="results">Album not found</h4>
+          : <h4 className="results">{ `Resultado de álbuns de: ${singerInput}` }</h4>}
         { loadingApi ? <Loading /> : artistResultsList.map((artist, index) => (
-          <div key={ index }>
+          <div key={ index } className="album">
             <Link
               to={ `/album/${artist.collectionId}` }
               data-testid={ `link-to-album-${artist.collectionId}` }
+              className="detailsLink"
             >
-              <img src={ artist.artworkUrl100 } alt={ artist.artistName } />
+              <img
+                src={ artist.artworkUrl100 }
+                alt={ artist.artistName }
+                className="cover"
+              />
               <h3>{ artist.collectionName }</h3>
               <h4>{ artist.artistName }</h4>
             </Link>
