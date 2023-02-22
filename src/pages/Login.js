@@ -3,6 +3,12 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import '../CSS/login.css';
+import trybeImage from '../images/trybe.png';
+import tunesImage from '../images/tunes.png';
+import headset from '../images/Group 3.png';
+// import lines1 from '../images/Group 5.png';
+// import lines2 from '../images/Group 6.png';
+// import elipse from '../images/Ellipse 4.png';
 // import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
@@ -20,8 +26,20 @@ class Login extends React.Component {
 
     return (
       <div data-testid="page-login" className="page loginBody">
+        {/* <img src={ lines1 } alt="trybe" className="lines1" />
+        <img src={ lines2 } alt="trybe" className="lines2" />
+        <img src={ elipse } alt="trybe" className="elipse" /> */}
         <form>
-          <h1> Login </h1>
+          <div className="all-icons">
+            <div className="icon1-div">
+              <img src={ trybeImage } alt="trybe" className="loginImg1" />
+              <img src={ tunesImage } alt="trybe" className="loginImg2" />
+            </div>
+            <div className="icon2-div">
+              <img src={ headset } alt="trybe" className="headset" />
+            </div>
+          </div>
+
           <label htmlFor="login-name-input" className="login">
             <input
               name="userName"
@@ -31,7 +49,7 @@ class Login extends React.Component {
               onChange={ handleChange }
               value={ userName }
               className="textInput"
-              placeholder="User"
+              placeholder="qual é o seu nome?"
             />
           </label>
           <button
@@ -41,10 +59,9 @@ class Login extends React.Component {
             onClick={ saveNameButton }
             className="buttonLogin"
           >
-            Entrar
+            ENTRAR
           </button>
         </form>
-        <img src="https://theme.zdassets.com/theme_assets/9633455/9814df697eaf49815d7df109110815ff887b3457.png" alt="trybe" className="loginImg" />
         <div>
           { loadingApi && <Loading /> }
         </div>

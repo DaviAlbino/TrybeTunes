@@ -1,45 +1,59 @@
 .loginBody {
-  background-color: #2fc18c;
   font-family: fantasy;
   font-size: 25px;
-  height: 947px;
+  height: 900px;
+  margin: 0 auto;
 }
 
 .page {
+  align-items: center;
+  background: linear-gradient(90deg, rgba(0, 59, 229, 1) 0%, rgba(0, 213, 226, 1) 68%);
+  background-image: url('../images/Group\ 5.png') , url('../images/Group\ 6.png') , url('../images/Ellipse\ 4.png');
+  background-position: left 100px top , right bottom , left bottom;
+  background-repeat: no-repeat;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 
 form {
-  align-content: center;
   align-items: center;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  margin-bottom: 250px;
-  margin-left: 200px;
-  margin-top: 200px;
-  padding: 60px 0;
-  width: 25%;
+  gap: 50px;
+  height: 450px;
+  justify-content: center;
+  margin: auto;
+  width: 750px;
 }
 
-.login {
+/* .login {
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 60%;
+} */
+
+input {
+  color: #003be5;
+  font-family: Epilogue , sans-serif;
+  font-weight: 900;
+  height: 14px;
+  text-align: center;
+  width: 354px;
 }
 
-.login, .textInput {
-  color: #444b54;
-  font-family: fantasy;
-  font-weight: 1000;
+::-webkit-input-placeholder {
+  color: #003be5;
+  opacity: 0.6;
 }
 
 .textInput {
-  border-radius: 5px;
+  border-color: #003be5;
+  border-radius: 10px;
   height: 30px;
 }
 
@@ -51,10 +65,33 @@ button {
 }
 
 .buttonLogin {
-  background-color: #042bbc;
+  background-color: #003be5;
+  border-radius: 100px;
+  font-family: Epilogue , sans-serif;
+  height: 40px;
+  width: 400px;
 }
 
-.loginImg {
-  height: 370px;
-  padding-top: 100px;
+
+.loginImg1 {
+  height: 41.78px;
+  width: 112.84px;
+}
+
+.loginImg2 {
+  height: 29.65px;
+  width: 113.71px;
+}
+
+.icon1-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.all-icons {
+  align-items: center;
+  display: flex;
+  flex-flow: row-reverse wrap;
+  gap: 15px;
+  justify-content: center;
 }

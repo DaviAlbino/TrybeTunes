@@ -115,8 +115,7 @@ class App extends React.Component {
             </Switch>
           </BrowserRouter>
         </div>
-        <p>TrybeTunes</p>
-
+        {/* <p>TrybeTunes</p> */}
       </>
     );
   }
