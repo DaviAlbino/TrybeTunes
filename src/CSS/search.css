@@ -1,3 +1,31 @@
 body {
   background: linear-gradient(90deg, rgba(0, 59, 229, 1) 0%, rgba(0, 213, 226, 1) 68%);
 }
+
+.page-search {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-container {
+  flex-grow: 15;
+}
+
+.searchForm {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 90px;
+}
+
+.inputArtist {
+  border-radius: 20px;
+  height: 30px;
+  margin: auto;
+  width: 450px;
+}
+
+.results-container {
+  background-color: #eff3f9;
+  height: max-content;
+}

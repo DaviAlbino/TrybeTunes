@@ -8,15 +8,15 @@
 .page {
   align-items: center;
   background: linear-gradient(90deg, rgba(0, 59, 229, 1) 0%, rgba(0, 213, 226, 1) 68%);
-  background-image: url('../images/Group\ 5.png') , url('../images/Group\ 6.png') , url('../images/Ellipse\ 4.png');
-  background-position: left 100px top , right bottom , left bottom;
+  background-image: url('../images/Group\ 5.png') , url('../images/Group\ 6.png');
+  background-position: left 100px top , right 100px bottom;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-form {
+.login-form-page {
   align-items: center;
   background-color: white;
   border-radius: 20px;

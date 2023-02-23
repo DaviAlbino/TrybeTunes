@@ -1,0 +1,25 @@
+header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 980px;
+  justify-content: space-evenly;
+  margin: auto;
+  width: max-content;
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: auto;
+}
+
+.header-user-name {
+  margin: auto;
+}
+
+.all-icons {
+  margin: 80px auto;
+}

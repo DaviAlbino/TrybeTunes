@@ -29,7 +29,7 @@ class Login extends React.Component {
         {/* <img src={ lines1 } alt="trybe" className="lines1" />
         <img src={ lines2 } alt="trybe" className="lines2" />
         <img src={ elipse } alt="trybe" className="elipse" /> */}
-        <form>
+        <form className="login-form-page">
           <div className="all-icons">
             <div className="icon1-div">
               <img src={ trybeImage } alt="trybe" className="loginImg1" />
